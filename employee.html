@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/5cb153a9fd.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="employee.js"></script>
+  
+	<style type="text/css">
+		html, body{ height: 100%; 
+		} 
+		.full-page{ height: 100vh; width: 100vw; 
+		} 
+
+		input{
+			width: 350px;
+		}
+		.form-group input{
+			width: 350px;
+		} 
+
+	</style>
+	
+</head>
+<body>
+	
+	<h1 class="text-capitalize text-center text-white bg-dark mb-0">Employee View</h1>
+	<section class="bg-light text-white text-center ">
+		<div class=" justify-content-center h-100  align-items-center  mt-0" >
+                       <img src="data:image/jpeg;base64,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" style="width: 100%;height: 250px;">
+        </div>
+		
+	</section>
+	 <nav class="nav flex-column flex-md-row justify-content-around align-items-center bg-danger text-dark">
+        <button class="btn btn-danger text-white" onclick="Add_Products()">Add Product</button>
+        <button class="btn btn-danger text-white " onclick="Remove_Products()">Remove Product</button>
+        <button class="btn btn-danger text-white " onclick="See_Products()">See Product Details</button>
+        <button class="btn btn-danger text-white" onclick="Update_Products()">Update Products details</button>
+    </nav>
+    <div class="container-fluid">
+          <!--- contents of the products starts from here --->
+          <!--- contents of Add_Products() start from here ---->
+            <div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+              <div id="add_products" style="display: none;">
+                <h2>Add Product</h2>
+                <form action="" method="post" class="form-group" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="supplierid">Product id</label>
+                    <input type="text" name="productid" id="productid" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="productname">product  name</label>
+                    <input type="text" name="suppliername" id="suppliername" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="productname">product  price</label>
+                    <input type="text" name="suppliername" id="suppliername" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="productname">quantity</label>
+                    <input type="text" name="suppliername" id="suppliername" class="form-control">
+                  </div>
+                  
+                    
+                    <label>Photo</label>
+                  <br>
+                  <input type="file" name="file" accept="image/*">
+                  <br>
+                  <br>
+                  
+                  
+                  <div class="form-group">
+            
+                    <input type="submit" class=" btn-info mb-2" name="submit">
+                  </div>
+          
+                </form>
+              </div>
+        
+            </div>
+          <!--- contents of the Add_Products() is ending here --->
+          <!--- contents of Remove_Products() start from here ---->
+            <div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+              <div id="remove_products" style="display: none;">
+                <h2>remove product</h2>
+                <form action="" class="form-group">
+                  
+                  <div class="form-group">
+                    <label>Product id</label>
+                    <input type="input" name="" class="form-control">
+                    <input type="submit" class=" btn-info mb-2 form-control" name="submit" value="Remove Products">
+                  </div>
+                </form>
+              </div>
+        
+            </div>
+          <!--- contents of the Remove_Products() is ending here --->
+          <!--- contents of See_Products() start from here ---->
+            <div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+              <div id="see_products" style="display: none;">
+                <h2>See Product</h2>
+                <form action="" class="form-group">
+                  <label>Product id</label>
+                  <input type="input" name="" class="form-control">
+                  <div class="form-group">
+            
+                    <input type="submit" class=" btn-info mb-2" name="submit" value="See Product">
+                  </div>
+                </form>
+              </div>
+        
+            </div>
+          <!--- contents of the See_Products() is ending here --->
+          <!--- contents of Update_Products() start from here ---->
+            <div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+              <div id="update_products" style="display: none;">
+                <h2>Update Product</h2>
+                <form action="" method="post" class="form-group" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="supplierid">Product id</label>
+                    <input type="text" name="productid" id="productid" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="productname">product  name</label>
+                    <input type="text" name="suppliername" id="suppliername" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="productname">product  price</label>
+                    <input type="text" name="suppliername" id="suppliername" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="productname">quantity</label>
+                    <input type="text" name="suppliername" id="suppliername" class="form-control">
+                  </div>
+                  <label>Photo</label>
+                  <br>
+                  <input type="file" name="file" accept="image/*">
+                  <br>
+                  <br>
+                  
+                  
+                  <div class="form-group">
+            
+                    <input type="submit" class=" btn-info mb-2" name="submit" value="update">
+                  </div>
+          
+                </form>
+              </div>
+        
+            </div>
+          <!--- contents of the Update_Products() is ending here ---> 
+        </div>
+          
+        <!--- contents of the products ends here --->
+    </div>
+	
+</body>
+
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/5cb153a9fd.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="function.js"></script>
+  
+	<style type="text/css">
+		html, body{ height: 100%; 
+		} 
+		.full-page{ height: 100vh; width: 100vw; 
+		} 
+
+		input{
+			width: 350px;
+		}
+		.form-group input{
+			width: 350px;
+		} 
+
+	</style>
+	
+</head>
+<body>
+	
+	<h1 class="text-capitalize text-center text-dark bg-warning">Admin panel</h1>
+	<section class="bg-light text-center mb-1">
+		<div class="card justify-content-center h-100  align-items-center  " style="text-align: center; background-image: url(data:image/jpeg;base64,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);">
+                        <center><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAwFBMVEX///9FRUUAAABesOZBQUE/Pz/4+Pj8/Pw8PDw5OTnl5eXx8fE2Njbe3t5ISEhlZWWzs7O+vr6lpaXS0tJQUFDu7u6Pj4/k5ORgYGDLy8vZ2dkuLi6ampp3d3dxcXGgoKCCgoLDw8O2trZsbGxWVlZks+eTk5N/f38TExN2dnZ1u+kiIiLz+f3g7/rQ5/eOxu0SEhJRq+W73PSfzu/C4fWl0PAeHh7N5fePx+3q8/vb7fmBv+q93fSu1fGdqrKdt8ikmT7kAAANMUlEQVR4nO1d52KyyhYVpSNSBAVs2BNjiunGeO/7v9UFC1KGMqMD4busXyfHJN+s7JndZ0+tVqFChQoVKlSoUKFChQoVKlSoUKFChQoV8gVtjWV1NBqpqiyPLaHo5dwalrqUjJnWOkKbGdJStYpe1O1Aq0aLIEmSuMD9qiXJTNFLuwn4To/zk/PR5Jr90u9Whu+TLJDeEVxL1ote41WgFSOJnwt2Oi6xHAW1Bd6fflCtvlj0QlFB94l0gq4Yh+2il4qIURZ6B4pGOS3HJCtBh6JEF71aBPDZtugRXKfo5SJgSmUnSBCtcdHrhcYIQoIOSKlsNkOcwTEkWmrRS4YD04Hj5whx2i160VAwDUgRlk2IQgeaIEHdl0mIJuwpPAhxUvSys4PuQ1mKsxA75QkzLAlBhAQ5K497qnAIBB3HpjTbVF+ibFJnm9pl2aaihkTQ8WvKok3bTTSGRKssobCJypArSZjIKKgMmyVRpgyiKi0Rw8k/z1CuGP4fMyyLLkVmyJaFIbKmIcrCENlalMWnQbf4s5IwrI0RGZJGWTxvZIaliS1QPW9yyBe99IxAZUgtyxIBo8aH5YnxLUSG7KIstQsrrXYfx7A0nRkWWiKKYDslYciMEGVIGnI5SsEKYqrNodjql6FLikepWZzBlWGfdhD36AG9Mng18JXDsjG8R9SkR4Zl2KWLa3YpWwZNgx7huwW2MjDsosa/DqhBGRjSLXSG7KgMDBnE6qGLpln06jMBOU1DEFo5QmAeeZuynYx+6dPTGi+HZNB9VG1KZczqM/PGfPX9+oOXRwJ4pFYMNz5MFCGzb7we/2u/aTjYbDbPedABgFaRhEgmdgqv3+ebxvz98N+NM1b5EIpijCRDdhQvwvXT85HSl/PF76ZwhuIUhWJLif2Fj2/zM6en9XrlyXCeI6kAaJQon5zGb9JXT2qN3dtzI8xwm79mHc/gGSaZiqd5A4i56wJtX5+/86N2Aj+A92tacvzve9yBGTZeme1+N29s9vlxOwGyy5twNWmCMVy/bcAM57vVQbwnJZsjFOhtSi2TnO7fGBl6WOVt/vV7WCEmN0F/xRzEC3bbvLid0IckSBrg6ujX+892u378TiPYaHznrFBNyG1KLoG/ZrtzfDPnsKUTbMy/8mVIDyG3Kbh79j11d3p4y9soqnAinAGTbOu3zARzP4c1HSr1zYJvdv0AtuemsXJMRNh6zJ9y5uegD+O5xWSCX6P8Vvufx+3j43vIB3jNmZ0LGiKZQUrAX7GNqtC3x5PZXP/6j+j8MUdmHiBC/R44AxV1Rz98bsGP/9MiZFhjMp/EGBFG7fxb4GP/H2C+/ykgdWNmZcjGJREfnwMEVyF96fdWHbP5/Zs3SXqRLcJgl7H1mPXer00/wp+GNOomd4vBD7NQJLWkFNuTbydGvOtV0QyzXUMk1aQU2/py2OaR6CMUVBXAkJG1VIopfULbC8No3uk1tE3zZ1ijR2kJcHaZWPb1RxXRvNO+eIaOtkkWIpnYJcS8+k/aPKIqw25rEQyTOxdINj6DWIsYi0bE9wzZy3kxDGsjKk6MZHLbcyQ7E07i/2z+BsOaHOPcpPYEf4U2YTiA8Hvf89Xu7b2w+mr7HjinZpDWWvIYDp4CQSCz93/yVYj82sqp4qmPjLDtp7RFajk0GgA/X2KI9d5/CnNOYRyhywZlnzL1jNnR/BqHpKaTDK0z0STG7vcoq/XTWyB6KqJi2rYJkiCnk9PZ0M1O6zjzi6RYbiqLWc4MINc93328/v7uv4MbuID4kFaPM7AozbtlL4jyvdZsEsZg1OZTytmnjxlgnmY+j+annvMWorU86xaSMLzRM4yg87yuC+nV+k7LsNU242xTR0d+Z0km5lu5YFS/O0q2oHt/rVa9Xn+5e+AMVagx/vgiFqs8U1GWFErRsC3I5t9F/YyHwx6PZqSiCAeP+KCrVDQq5KSYuXO0CHBrRMNjeHcwKXH1Qx9yS+rT1hSYYyO5+3E3KkhrUdeipV/5xWNYdxmuwzFEFLklhLtqKy6spzhJNYM2gp80HQ6RFgx+WA8y3MYVSC+nMKfimignVitILlCdEJTpkUS47DS+8zF0P/uJI7bZ7b/dDZxTxrs9GqaMSSRHl8PImMuHM4ugBy7YPoL1thslxm3S18fa9suJkfOoADOKbRApeaemv+epK/lozPyJDOvTz9ANIC+B/nzV8LE9Bv3r9xwI6upUI9MyMmygPVZY+nkQh/9ljuyhYRD+D+qH0vD6a3UgNt+vt08X+59bw5DYmWWYIEgZQVWqBoho5pL9vKtH0T9+9/rDpXRwXC5B0y4XerQpNbNUmchZKKU2bgL4RGGfBe8o1GNxgjkbx00wyY8FjKAYzUy5e1ILZ+75aSaGn6p+5nhUmLT+cdyx8xV+X1RXpGz8HETTvp1MDOv1nuwLlYV25+U/q93z98fv0xZ30kIY37OZq0vLaEAvP6SzO2KmnKyMYHbcH/pvPo1s4kLL3NpFGoDqkqhlZVh/sF2LSSt27/AllcvsBQuqJwh4y2CYwssPw6SVQc/7KoeOd1GC6M0jp8AVZT2IB5BSz/dVfD3uVhBgCBIasO1Q4WAYhrDArWUyFQYvIgQtR+ml80gA5lmgKtSlEWB7swJyYP4MQxHqzgiwD8G8ToJ1G+udaGYJ1bPWBIiwm91SAIF5zssE7rK2Fv0N9OA6gr3EotzVgOyO5Uann+uaFn9S8mo6iUT0sRKsyXAipM620GY1aWB3+qqsvKSTSALmGfU83P1C71qofo5s73pXapk6Zo9Ggbt81zzn9NXP9KVnA+YB9TrsRIFz4Ht/K4IdzO6MCXkK7ZNyaRPpa68/SKpF1xhxMmjGH9UFXoKwN++4c/2wn0rvbuaPksez2PARr9fNQ15LI0+hnJAaKlGj0Mons5jvxOuwmXAXmrwBZal5J0CMzA/AW7WHkyA9gtuk3pz1SYqjLYHcMN0GU8RpLQTITcqdj5Yuk0kEWfCidbB3h9Ol4SFv3XGXCreYZC7iOkx54FlsYWQIO03AnyWllViCo9h/cALSqA/4vDYGcjRL6Hq2HhMz9RIOlgH4/jt8wyUYyJv25DCkQGSg65b0SqAJVFFsp01jcW0YKH7utcmwdEA79SEx/RlrZmYjSxduTVPvQTKMPMoxASx1mtgGvQT8hPe3md56whvszMfIJEQGFPsmD6WJ108ubj2YF3ZCUmQSIg1yT5Mf7uATGWo3Zgh1H40AzPIQQHnu5KQLkytDG9LgRxnagFWmRLS5MoQdy1I+GcJOD4poGnoBWOVfOoeQxoJgw9YCqEuTB+/IeTKkYRlGb/yAdH9yNTC53H9jhl1YhmSkHR8kw7uku2tMcurxxiPAoYc8k9Pgn1hXgVFiksmX41NSTcMembd12+CHrQcfGjNjPLCEmZ50TLKmZ3TU8e1HgSI8euCLcxiwAF3Ysf8kMI/8spiYIpYYEf5pDu5i66xBQqomziSCs6wktpwwPENvfheTnKf5BG+4mL4pfE/rws9hO4/KB1p6P4BHUY9JsuIrjyI8IHMu1qZWDD+jG/VwJwH0rdgIomga7qRMTSqNYt3mA8dLj3VmMCYTEZ51OB/ELHXtnndbiNFFJf7cYqxbiPAMyem5sJ2lu+RTGinj8VhRBwmejI2PoONBQTMkqNNBtK7svvDwgLUNA2H2KneuFF3ZfuGhifWZD9jhT4SbFD7pj+ztpCnA2ogBm6dxcX5MTXAb9T5JY9lXzOso4nx/DuWdI8o+/bBlCTTjoOa/m4aCF4wMYTPCB/QAPnJceTcbDHwMYbP6B7CAg8Nnu4oQB3x1bgZpuKwG0H7mVRR72I4ig/Y8B6A8yEyuooiv0Rvp8UbgdAhavobiC7ZnhRCf4wKZMHpyTZ834ObpbcAjzbEGXreAuW8RwV1yjvUK6GivyJCgSUlQrey9YMoN3zsYAurTDoDMfXof2AVSN5At1/A179EqlXqTEijEWUS/p/eBeWge72uoZ6FzODtoaWWZ5TplBGxkn5qJqSkfOO9HGVVzk4t3mJ9MYtr94SzzpTUPXPh6XnLFxUNr6deagmp83uFtYz+AVxZDDZpkcGF0tltPkamYupow2fyGYERlNNBYGJahW6Ri0Pm25Y4B0q0gjy8v0N223JE4LnaSVxhUYLJAsBNoSddo0RzLfXsYdHWMYh/uZPSu5fztqSabiSY7vaiIYKnUe2KVFvRghXFY/DNl7lQdU13Omk0udc+S9x5FRvElNQZ+QemBUgXe+03Z4UTutLNnh61ezyEabzLJ+0tMoHultuD9SyagZBd/hOEFvCkvltJM01qtQ2KODKIp+Sy/ODu4YsPQURNZH0P1rz7iRfPt8UTtL+zl/XA6lTxMJduvbiaO1Z+G7Tc98jHMwfbdAAxNCwfQTFgiQmcZTfC2feq0HM+UJQKwC/2NUzgzhwXCF1f9owxPYUdvZqtleakbFhNNWozbVvfmLcB/BnSWuXwVKlSoUKFChQoVKlSoUKFChQr/FP4HTUwS8FBWjs8AAAAASUVORK5CYII=" ></center>
+        </div>
+		
+	</section>
+	<section>
+		<div class="container-fluid">
+    <!-- Control the column width, and how they should appear on different devices -->
+    		<div class="row ">
+    			<div class="col-sm-4 col-lg-4 col-md-4 col-xl-4 w-100 bg-dark text-center text-white  ">	
+    					<button class="btn btn-dark mx-auto w-100" onclick="employee()">employee</button>
+    					<button class="btn btn-dark mx-auto w-100" onclick="supplier()">supplier</button>
+    					<button class="btn btn-dark mx-auto w-100" onclick="products()">products</button>
+    					
+    					
+    			</div>
+    			<div class="col-sm-8 col-lg-8 col-md-8 col-xl-8 bg-success my-auto pt-4" id="employee"  >
+    				<div class="card-columns my-auto ">
+    					<div class="col-lg-20 col-sm-20 col-md-20 my-auto text-center" style="display: block;">
+    						<!--- card 1 -->
+    						<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="Add_Employee()" ><strong>Add Emplyee</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>
+							<!--- card 2 -->
+							<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="Remove_Employee()" ><strong>Remove Emplyee</strong></button>
+    									
+    								</div>
+  								
+								</div>
+
+							</div>
+							<!--- card 3 -->
+							<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="See_Employee()" ><strong>See details</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>
+							<!--- card 4 -->
+							<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="Update_Details_Employee()" ><strong>Udate details</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>	
+							</div>
+						</div>
+
+    				</div>
+    				<!--- Supplier --->
+    				<div class="col-sm-8 col-lg-8 col-md-8 col-xl-8 bg-success my-auto pt-4" id="supplier" style="display: none;">
+    				<div class="card-columns my-auto ">
+    					<div class="col-lg-20 col-sm-20 col-md-20 my-auto text-center">
+    						<!--- card 1 -->
+    						<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="Add_Supplier()" ><strong>Add supplier</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>
+							<!--- card 2 -->
+							<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="Remove_Supplier()" ><strong>Remove suppplier</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>
+							<!--- card 3 -->
+							<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="See_Supplier()" ><strong>See supplier</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>
+							<!--- card 4 -->
+							<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="Update_Details_Supplier()" ><strong>Update details</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>	
+							</div>
+						</div>
+
+    				</div>
+    				<!--- Products --->
+    				<div class="col-sm-8 col-lg-8 col-md-8 col-xl-8 bg-success my-auto pt-4" id="products" style="display: none;" >
+    				<div class="card-columns my-auto ">
+    					<div class="col-lg-20 col-sm-20 col-md-20 my-auto text-center">
+    						<!--- card 1 -->
+    						<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="Add_Products()" ><strong>Add Products</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>
+							<!--- card 2 -->
+							<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="Remove_Products()" ><strong>Remove Products</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>
+							<!--- card 3 -->
+							<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="See_Products()" ><strong>See product details</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>
+							<!--- card 4 -->
+							<div class="container">
+ 						 		
+ 						 		<div class="card">
+ 						 			
+    								<div class="card-body">
+    									<button class="btn-info" onclick="Update_Details_Products()" ><strong>Update Product details</strong></button>
+    								</div>
+  								
+								</div>
+
+							</div>	
+							</div>
+						</div>
+
+    				</div>
+    				
+    			
+
+    		</div>
+    
+    
+    
+	</section>
+	<!--- this is the section 3--->
+	
+			<div class="container" >
+				<div id="details_employee" >
+					<!--- details of the selected options --->
+					<!--- it will be displayed when employee() will call --->
+					<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100  "  style="display: none;">
+					 	<div id="add_employee" style="display: none;">
+							<form class="form-group   " enctype="multipart/form-data" >
+								<div class="form-group">
+ 									<h4>Add employee</h4>
+ 								</div>
+								<div class="form-group">
+									<label for="employee_name mt-2" >Employee Name</label>
+									<input type="text" class="form-control" id="employee_name" name="employee_name">
+								</div>
+								<div class="form-group">
+									<label for="employee_email">E-mail</label>
+									<input type="email" class="form-control" id="employee_email" name="employee_email" required="">
+								</div>
+								<div class="form-group">
+									<label for="mobile">Mobile</label>
+									<input type="number" class="form-control" id="mobile" name="mobile" min="10"  min="6666666666" max="9999999999" required="">
+								</div>
+								<div class="form-group">
+									<label for="gender">Gender</label>
+									<label>Male</label>
+									<input type="radio"  name="gender" value="male" style="width: 35px;">
+									<label>Female</label>
+									<input type="radio" name="gender" value="female" style="width: 35px;">
+								</div>
+								<div class="form-group">
+									<label for="date">D.O.B</label>
+					
+									<input type="date" class="form-control" id="date" name="dates">
+								</div>
+									<label>Photo</label>
+									<br>
+									<input type="file" name="file" accept="image/*">
+									<br>
+									<br>
+									<input type="submit" class=" btn-info mb-2" name="submit">
+							</form>
+						</div>
+				
+
+					</div>
+				<!--- content of the remove_employee() start here --->
+					<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100  "  style="display: none;">
+						<div id="remove_employee" style="display: none;">
+							<form action="/action_page.php">
+ 								<div class="form-group">
+ 									<h4>update employee</h4>
+ 								</div>
+ 								<div class="form-group">
+    		    					<label for="pwd">Username:</label>
+     	        					<input type="text" class="form-control" id="pwd" placeholder="Enter username" name="username">
+    							</div>
+   								<div class="form-group">
+   			    					<label for="email">Email:</label>
+     		   					    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+   			   					 </div>
+   			    
+    			
+   									<input type="submit" class=" btn-info mb-2" name="submit">
+							</form>
+						</div>
+ 						
+					</div>
+				<!--- content of the remove_employee() end here --->
+				<!--- content of the see_employee() start here --->
+					<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100  "  style="display: none;">
+						<div id="see_employee" style="display: none;">
+							<form action="/action_page.php">
+ 								<div class="form-group">
+ 									<h4>see employee</h4>
+ 								</div>
+ 								<div class="form-group">
+    		    					<label for="pwd">Username:</label>
+     	        					<input type="text" class="form-control" id="pwd" placeholder="Enter username" name="username">
+    							</div>
+   								<div class="form-group">
+   			    					<label for="email">Email:</label>
+     		   					    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+   			   					 </div>
+   			    
+    			
+   									<input type="submit" class=" btn-info mb-2" name="submit">
+							</form>
+						</div>
+ 						
+					</div>
+				<!--- content of the see_employee() end here --->
+				<!--- content of the update_Details_employee() start here --->
+					<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100  "  style="display: none;">
+						<div id="update_employee" style="display: none;">
+							<form action="/action_page.php">
+ 								<div class="form-group">
+ 									<h4>update employee</h4>
+ 								</div>
+ 								<div class="form-group">
+    		    					<label for="pwd">Username:</label>
+     	        					<input type="text" class="form-control" id="pwd" placeholder="Enter username" name="username">
+    							</div>
+   								<div class="form-group">
+   			    					<label for="email">Email:</label>
+     		   					    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+   			   					 </div>
+   			    
+    			
+   									<input type="submit" class=" btn-info mb-2" name="submit">
+							</form>
+						</div>
+ 						
+					</div>
+				<!--- content of the update_employee() end here --->
+				<!--- content of the employee() end here --->
+			    </div>
+				<!--- content of the supplier start from here --->
+				<div id="details_supplier">
+					<!--- content of the add_suppier() will be display --->
+					<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+						<div id="add_supplier" style="display: none;">
+							<h2>Add supplier</h2>
+							<form action="" method="post" class="form-group">
+								<div class="form-group">
+									<label for="supplierid">Supplier id</label>
+									<input type="text" name="supplierid" id="supplierid" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="suppliername">Supplier name</label>
+									<input type="text" name="suppliername" id="suppliername" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="suppliername">Address</label>
+									<input type="text-area" name="address" id="address" class="form-control" required="address">
+								</div>
+								<div class="form-group">
+						
+									<input type="submit" class=" btn-info mb-2" name="submit">
+								</div>
+					
+							</form>
+					 	</div>
+				
+					</div>
+				<!--- content of the add_supplier() ends here --->
+				
+				
+				<!--- contents pf the remove_supplier() will be shown here --->
+           			<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+						<div id="remove_supplier" style="display: none;">
+							<h2>Remove supplier</h2>
+							<form action="" method="post" class="form-group">
+								<div class="form-group">
+									<label for="supplierid">Supplier id</label>
+									<input type="text" name="supplierid" id="supplierid" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="suppliername">Supplier name</label>
+									<input type="text" name="suppliername" id="suppliername" class="form-control">
+								</div>
+								<div class="form-group">
+						
+									<input type="submit" class=" btn-info mb-2" name="submit">
+								</div>
+					
+							</form>
+						</div>
+				
+					</div>
+				<!--- contents of the remove_supplier() is ending here --->
+				<!--- contents ff the see_supplier() will be shown here --->
+           			<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+						<div id="see_supplier" style="display: none;">
+							<h2>See  supplier</h2>
+							<form action="" method="post" class="form-group">
+								<div class="form-group">
+									<label for="supplierid">Supplier id</label>
+									<input type="text" name="supplierid" id="supplierid" placeholder="Enter the supplier id" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="suppliername">Supplier name</label>
+									<input type="text" name="suppliername" id="suppliername" placeholder="Enter the suppliername" class="form-control">
+								</div>
+								<div class="form-group">
+						
+									<input type="submit" class=" btn-info mb-2" name="submit">
+								</div>
+					
+							</form>
+						</div>
+				
+					</div>
+				<!--- contents of the see_supplier() is ending here --->
+				<!--- contents pf the update_supplier() will be shown here --->
+           			<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+						<div id="update_supplier" style="display: none;">
+							<h2>Update supplier</h2>
+							<form action="" method="post" class="form-group">
+								<div class="form-group">
+									<label for="supplierid">Supplier id</label>
+									<input type="text" name="supplierid" id="supplierid" placeholder="Enter the supplierid" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="suppliername">Supplier name</label>
+									<input type="text" name="suppliername" id="suppliername" placeholder="Enter the suppliername" class="form-control">
+								</div>
+								<div class="form-group">
+						
+									<input type="submit" class=" btn-info mb-2" name="submit">
+								</div>
+					
+							</form>
+						</div>
+				
+					</div>
+				<!--- contents of the update_supplier() is ending here --->
+				<!--- contents of the supplier end here --->
+				</div>
+				
+				<!--- contents of the products starts from here --->
+				<div id="details_products" style="display: none;">
+					<!--- contents of Add_Products() start from here ---->
+						<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+							<div id="add_products" style="display: none;">
+								<h2>Add Product</h2>
+								<form action="" method="post" class="form-group" enctype="multipart/form-data">
+									<div class="form-group">
+										<label for="supplierid">Product id</label>
+										<input type="text" name="productid" id="productid" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="productname">product  name</label>
+										<input type="text" name="suppliername" id="suppliername" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="productname">product  price</label>
+										<input type="text" name="suppliername" id="suppliername" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="productname">quantity</label>
+										<input type="text" name="suppliername" id="suppliername" class="form-control">
+									</div>
+									
+										
+										<label>Photo</label>
+									<br>
+									<input type="file" name="file" accept="image/*">
+									<br>
+									<br>
+									
+									
+									<div class="form-group">
+						
+										<input type="submit" class=" btn-info mb-2" name="submit">
+									</div>
+					
+								</form>
+							</div>
+				
+						</div>
+					<!--- contents of the Add_Products() is ending here --->
+					<!--- contents of Remove_Products() start from here ---->
+						<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+							<div id="remove_products" style="display: none;">
+								<h2>remove product</h2>
+								<form action="" class="form-group">
+									
+									<div class="form-group">
+										<label>Product id</label>
+										<input type="input" name="" class="form-control">
+										<input type="submit" class=" btn-info mb-2 form-control" name="submit" value="Remove Products">
+									</div>
+								</form>
+							</div>
+				
+						</div>
+					<!--- contents of the Remove_Products() is ending here --->
+					<!--- contents of See_Products() start from here ---->
+						<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+							<div id="see_products" style="display: none;">
+								<h2>See Product</h2>
+								<form action="" class="form-group">
+									<label>Product id</label>
+									<input type="input" name="" class="form-control">
+									<div class="form-group">
+						
+										<input type="submit" class=" btn-info mb-2" name="submit" value="See Product">
+									</div>
+								</form>
+							</div>
+				
+						</div>
+					<!--- contents of the See_Products() is ending here --->
+					<!--- contents of Update_Products() start from here ---->
+						<div class="container-fluid mt-2 d-flex align-items-center justify-content-center h-100 " >
+							<div id="update_products" style="display: none;">
+								<h2>Update Product</h2>
+								<form action="" method="post" class="form-group" enctype="multipart/form-data">
+									<div class="form-group">
+										<label for="supplierid">Product id</label>
+										<input type="text" name="productid" id="productid" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="productname">product  name</label>
+										<input type="text" name="suppliername" id="suppliername" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="productname">product  price</label>
+										<input type="text" name="suppliername" id="suppliername" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="productname">quantity</label>
+										<input type="text" name="suppliername" id="suppliername" class="form-control">
+									</div>
+									<label>Photo</label>
+									<br>
+									<input type="file" name="file" accept="image/*">
+									<br>
+									<br>
+									
+									
+									<div class="form-group">
+						
+										<input type="submit" class=" btn-info mb-2" name="submit" value="update">
+									</div>
+					
+								</form>
+							</div>
+				
+						</div>
+					<!--- contents of the Update_Products() is ending here --->	
+				</div>
+					
+				<!--- contents of the products ends here --->
+			</div>
+
+	<!--- ending of the details of all the options --->
+	<!--- ending of  the section 3--->
+	
+</body>
+
+</html>
